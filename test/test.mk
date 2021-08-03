@@ -1,10 +1,11 @@
 #!/usr/bin/make
 
-# c_starter_template Makefile.
+# rabclib test Makefile.
 # Author: Ricardo Benitez
 
 _OBJS_MAIN_TEST = test_main.o
 
+#_OBJS_TEST = test_cpu.o
 #OBJS_TEST = $(addprefix $(ODIR)/test/,$(_OBJS_TEST))
 OBJS_TEST = $(addprefix $(ODIR)/test/,$(_OBJS_MAIN_TEST))
 

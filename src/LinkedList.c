@@ -9,10 +9,12 @@
  **/
 
 #include <stdio.h>
-#include "example.h"
+#include <stdlib.h>
+#include "LinkedList.h"
 
-void example_function()
+LinkedList* create_linked_list()
 {
-    printf("Hello World\n");
+    LinkedList* node = (LinkedList*)(malloc(sizeof(LinkedList)));
+    return node;
 }
 

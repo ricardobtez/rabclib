@@ -1,13 +1,13 @@
 #!/usr/bin/make
 
-# c_starter_template Makefile.
+# rabclib main Makefile.
 # Author: Ricardo Benitez
 # For information about licensing, see LICENSE.
 
 # Setting compiler to GCC
 CC = gcc
 # Executable name
-EX_NAME = cstarter
+EX_NAME = rabclib
 
 # Compiler warnings
 CFLAGS = -Wall
@@ -34,12 +34,8 @@ ODIR = obj
 SDIR = src
 TDIR = test
 
-include $(TDIR)/test.mk
-
 # Object files to compile
-_OBJS = example.o
-
-#_OBJS_TEST = test_cpu.o
+_OBJS = LinkedList.o
 
 _OBJS_MAIN = main.o
 
@@ -73,6 +69,7 @@ debug_obj : init init_debug $(OBJS_DEBUG) init_bin_debug
 debug_main : $(OBJS_DEBUG_MAIN)
 	@$(CC) -g $(OBJS_DEBUG) $(OBJS_DEBUG_MAIN) -o bin/debug/$(EX_NAME)
 
+include $(TDIR)/test.mk
 test: test_run
 
 # Define a pattern rule that compiles every .c file into a .o file in its destination
