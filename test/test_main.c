@@ -9,20 +9,21 @@
  **/
 
 #include "test_common.h"
+#include "test_generated.h"
 
 /* A test case that does nothing and succeeds. */
-static void null_test_success(void **state)
-{
-    (void)state; /* unused */
-}
+//static void null_test_success(void **state)
+//{
+//    (void)state; /* unused */
+//}
 
 int main(void)
 {
     int error = 0;
-    const struct CMUnitTest tests[] =
+    /*const struct CMUnitTest tests[] =
     {
         cmocka_unit_test(null_test_success)
-    };
+    };*/
     error = cmocka_run_group_tests(tests, NULL, NULL);
     return error;
 }

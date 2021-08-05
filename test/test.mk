@@ -28,6 +28,8 @@ init_test :
 	@if [ ! -d "$(ODIR)/test" ]; then \
 		mkdir $(ODIR)/test; \
 	fi
+# Create the unit test generated files
+	@python3 ./tools/generate_unit_tests.py
 
 init_bin_test : init_bin
 	@if [ ! -d bin/test ]; then \

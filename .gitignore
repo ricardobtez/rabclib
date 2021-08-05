@@ -1,3 +1,4 @@
 obj/
 bin/
 *.o
+test/inc/test_generated.h

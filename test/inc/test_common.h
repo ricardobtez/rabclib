@@ -7,4 +7,3 @@
 #include <cmocka.h>
 
 #endif /* TEST_COMMON_H */
-
