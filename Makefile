@@ -28,7 +28,6 @@ CFLAGS += -Wlogical-op  # Warn if logical operations is used where bitwise might
 #CFLAGS += -Wuseless-cast  # Warn if cast to the same type
 
 INC = -iquote include/
-INC_TEST = -iquote test/inc/
 ODIR = obj
 SDIR = src
 TDIR = test

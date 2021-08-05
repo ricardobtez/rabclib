@@ -3,11 +3,12 @@
 # rabclib test Makefile.
 # Author: Ricardo Benitez
 
+INC_TEST = -iquote test/inc
 _OBJS_MAIN_TEST = test_main.o
+_OBJS_TEST = test_linked_list.o
 
-#_OBJS_TEST = test_cpu.o
-#OBJS_TEST = $(addprefix $(ODIR)/test/,$(_OBJS_TEST))
-OBJS_TEST = $(addprefix $(ODIR)/test/,$(_OBJS_MAIN_TEST))
+OBJS_TEST = $(addprefix $(ODIR)/test/,$(_OBJS_TEST))
+OBJS_TEST += $(addprefix $(ODIR)/test/,$(_OBJS_MAIN_TEST))
 
 test_run : debug_obj init_test $(OBJS_TEST) init_bin_test
 	@echo
