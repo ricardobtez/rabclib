@@ -1,7 +1,6 @@
 /**
  * \file test_linked_list.h
  * \brief This file contains the test Linked List test cases definition 
- * the Armv6 cpu
  *
  * \author Ricardo Benitez
  *

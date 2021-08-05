@@ -59,28 +59,48 @@ def obtain_test_cases(files):
     return test_cases
 
 def generate_header(test_cases, filename):
-    #print("\nTest cases found:", len(test_cases))
-    with open(filename, "w") as f:
-        f.write("/* Auto generated file */\n")
-        f.write("#ifndef TEST_GENERATED_H\n")
-        f.write("#define TEST_GENERATED_H\n")
-        f.write("#include \"test_common.h\"\n")
-        for file in test_cases:
-            #print(file)
-            p = re.compile("\/test_\S*")
-            m = p.search(file.getFilename())
-            if (m):
-                f.write("#include \"" + m.group()[1:] + "\"\n")
-        f.write("const struct CMUnitTest tests[] =\n")
-        f.write("{\n")
-        for file in test_cases:
-            for test in file.getTestCases():
-                line = "    cmocka_unit_test(" + test + "),\n"
-                f.write(line)
-        f.write("};\n")
-        f.write("#endif /* TEST_GENERATED_H */\n")
-        f.write("\n")
-    pass
+    counter = 0
+    template = open("tools/generated_header_template.h", "r")
+    includeKey = "#include"
+    key = "{"
+    foundKey = False
+
+    if (template):
+        with open(filename, "w") as f:
+            while (foundKey == False):
+                l = template.readline()
+                if (includeKey in l):
+                    foundKey = True
+                f.write(l)
+            foundKey = False
+
+            for file in test_cases:
+                #print(file)
+                p = re.compile("\/test_\S*")
+                m = p.search(file.getFilename())
+                if (m):
+                    f.write("#include \"" + m.group()[1:] + "\"\n")
+            
+            while (foundKey == False):
+                l = template.readline()
+                if (key in l):
+                    foundKey = True
+                f.write(l)
+            foundKey = False
+
+            for file in test_cases:
+                for test in file.getTestCases():
+                    counter = counter + 1
+                    line = "    cmocka_unit_test(" + test + "),\n"
+                    f.write(line)
+            l = template.readline()
+
+            while (l):
+                l = template.readline()
+                f.write(l)
+    template.close()
+
+    print("Test cases found: ", counter)
 
 # Use regular expression to parse the test case and obtain the name of the test case
 def parse_testcase(line):
@@ -92,7 +112,6 @@ def parse_testcase(line):
     return test_case
 
 def main():
-    #print("* Identifying the files to search the test cases from")
     files = obtain_files()
     test_cases = obtain_test_cases(files)
     generate_header(test_cases, HEADER_FILENAME)
