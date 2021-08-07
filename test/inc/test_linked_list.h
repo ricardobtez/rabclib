@@ -13,5 +13,8 @@
 #include "test_common.h"
 
 void create_linked_list_small_test(void **state);
+void append_linked_list_small_test(void **state);
+void find_linked_list_small_test(void **state);
+void size_linked_list_small_test(void **state);
 
 #endif /* TEST_LINKED_LIST_H */
