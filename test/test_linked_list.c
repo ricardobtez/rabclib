@@ -41,3 +41,13 @@ void size_linked_list_small_test(void **state)
     (void)append_linked_list(head, 45);
     assert_int_equal(size_linked_list(head), 3);
 }
+
+void delete_linked_list_small_test(void **state)
+{
+    (void)state;
+}
+
+void empty_linked_list_small_test(void **state)
+{
+    (void)state;
+}
