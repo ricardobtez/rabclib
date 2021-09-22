@@ -29,6 +29,7 @@ void find_linked_list_small_test(void **state)
     assert_int_equal(notFoundError, nenError_NotFound);
     tenError OkError = find_linked_list(head, 56, temp);
     assert_int_equal(OkError, nenError_Ok);
+    assert_non_null(temp);
 }
 
 void size_linked_list_small_test(void **state)

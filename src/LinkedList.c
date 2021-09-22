@@ -81,14 +81,27 @@ int size_linked_list(LinkedList* head)
 tenError delete_linked_list(LinkedList* head, int data)
 {
     tenError enError = nenError_InvalidInput;
-    (void)head;
-    (void)data;
+    LinkedList* found = NULL;
+    enError = find_linked_list(head, data, found);
+
+    if (nenError_Ok == enError)
+    {
+        free(found);
+    }
+
     return enError;
 }
 
 tenError empty_linked_list(LinkedList* head)
 {
-    tenError enError = nenError_InvalidInput;
-    (void)head;
+    tenError enError = nenError_Ok;
+    LinkedList* temp;
+
+    while(head)
+    {
+        temp = head->next;
+        free(head);
+        head = temp;
+    }
     return enError;
 }
