@@ -39,10 +39,10 @@ tenError append_linked_list(LinkedList* head, int data)
     return enError;
 }
 
-tenError find_linked_list(LinkedList* head, int data, LinkedList* item)
+LinkedList* find_linked_list(LinkedList* head, int data)
 {
-    tenError enError = nenError_InvalidInput;
     LinkedList* temp = head;
+    LinkedList* item = NULL;
 
     if (head && NULL == item)
     {
@@ -51,18 +51,13 @@ tenError find_linked_list(LinkedList* head, int data, LinkedList* item)
             if (temp->data == data)
             {
                 item = temp;
-                enError = nenError_Ok;
+                break;
             }
             temp = temp->next;
         }
-
-        if (NULL == item)
-        {
-            enError = nenError_NotFound;
-        }
     }
 
-    return enError;
+    return item;
 }
 
 int size_linked_list(LinkedList* head)
@@ -82,12 +77,10 @@ tenError delete_linked_list(LinkedList* head, int data)
 {
     tenError enError = nenError_InvalidInput;
     LinkedList* found = NULL;
-    enError = find_linked_list(head, data, found);
+    found = find_linked_list(head, data);
 
-    if (nenError_Ok == enError)
-    {
+    if (found)
         free(found);
-    }
 
     return enError;
 }

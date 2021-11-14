@@ -1,6 +1,7 @@
 
 #include "test_linked_list.h"
 #include "LinkedList.h"
+#include <stdio.h>
 
 void create_linked_list_small_test(void **state)
 {
@@ -25,10 +26,13 @@ void find_linked_list_small_test(void **state)
     (void)state;
     LinkedList* head = create_linked_list(56);
     LinkedList* temp = NULL;
-    tenError notFoundError = find_linked_list(head, 45, temp);
-    assert_int_equal(notFoundError, nenError_NotFound);
-    tenError OkError = find_linked_list(head, 56, temp);
-    assert_int_equal(OkError, nenError_Ok);
+    temp = find_linked_list(head, 45);
+    assert_null(temp);
+
+    temp = NULL;
+    tenError enError = append_linked_list(head, 45);
+    temp = find_linked_list(head, 45);
+    assert_int_equal(nenError_Ok, enError);
     assert_non_null(temp);
 }
 

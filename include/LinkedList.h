@@ -29,7 +29,7 @@ typedef enum
 /// Example function
 LinkedList* create_linked_list(int data);
 tenError append_linked_list(LinkedList* head, int data);
-tenError find_linked_list(LinkedList* head, int data, LinkedList* item);
+LinkedList* find_linked_list(LinkedList* head, int data);
 int size_linked_list(LinkedList* head);
 tenError delete_linked_list(LinkedList* head, int data);
 tenError empty_linked_list(LinkedList* head);
