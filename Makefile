@@ -70,11 +70,6 @@ debug_main : $(OBJS_DEBUG_MAIN)
 include $(TDIR)/test.mk
 test: test_run
 
-# Define a pattern rule that compiles every .c file into a .o file in its destination
-#$(ODIR)/%.o: $(SDIR)/%.c
-#	@echo this is not being run?
-#	@$(CC) -c $(CFLAGS) $(INC) $(CPPFLAGS) $< -o $@
-
 # Define a pattern rule that compiles every .c file into a .o file in its
 # destination in the debug folder
 $(ODIR)/debug/%.o : CPPFLAGS += -DDEBUG
