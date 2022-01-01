@@ -2,3 +2,7 @@ obj/
 bin/
 *.o
 test/inc/test_generated.h
+/cmake-build-debug/
+/cmake-build-minsizerel/
+/cmake-build-release/
+/cmake-build-relwithdebinfo/
